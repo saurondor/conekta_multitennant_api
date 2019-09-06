@@ -9,7 +9,8 @@ module Conekta
 
     attr_accessor :livemode, :amount, :payment_status, :customer_id, :currency,
                   :metadata, :created_at, :updated_at, :tax_lines, :line_items,
-                  :shipping_lines, :discount_lines, :shipping_contact, :charges
+                  :shipping_lines, :discount_lines, :shipping_contact, :charges,
+                  :api_key
 
     def initialize(id=nil)
       @id = id
@@ -34,23 +35,23 @@ module Conekta
 
     #Attribute accessors
     def create_line_item(params)
-      self.create_member_with_relation('line_items', params, self)
+      self.create_member_with_relation(api_key, 'line_items', params, self)
     end
 
     def create_tax_line(params)
-      self.create_member_with_relation('tax_lines', params, self)
+      self.create_member_with_relation(api_key, 'tax_lines', params, self)
     end
 
     def create_shipping_line(params)
-      self.create_member_with_relation('shipping_lines', params, self)
+      self.create_member_with_relation(api_key, 'shipping_lines', params, self)
     end
 
     def create_discount_line(params)
-      self.create_member_with_relation('discount_lines', params, self)
+      self.create_member_with_relation(api_key, 'discount_lines', params, self)
     end
 
     def create_charge(params)
-      self.create_member('charges', params)
+      self.create_member(api_key, 'charges', params)
     end
 
     def create_shipping_contact(params)

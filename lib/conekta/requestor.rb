@@ -8,8 +8,12 @@ module Conekta
 
     attr_reader :api_key
 
-    def initialize
-      @api_key = Conekta.api_key
+    def initialize(api_key=nil)
+      if (api_key.nil?)
+        @api_key = Conekta.api_key
+      else
+        @api_key = api_key
+      end
     end
 
     def api_url(_url='')

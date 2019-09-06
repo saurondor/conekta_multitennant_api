@@ -2,11 +2,12 @@ module Conekta
   module Operations
     module Create
       module ClassMethods
-        def create(params)
+        def create(api_key, params)
           _url = Util.types[self.class_name.downcase]._url
-          response = Requestor.new.request(:post, _url, params)
+          response = Requestor.new(api_key).request(:post, _url, params)
           instance = self.new
           instance.load_from(response)
+          instance.api_key = api_key
           instance
         end
       end

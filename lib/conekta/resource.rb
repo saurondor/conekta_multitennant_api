@@ -22,9 +22,9 @@ module Conekta
       Conekta::Util.underscore(self.to_s)
     end
 
-    def create_member_with_relation(member, params, parent)
+    def create_member_with_relation(api_key, member, params, parent)
       parent_klass = parent.class.underscored_class
-      child = self.create_member(member, params)
+      child = self.create_member(api_key, member, params)
       child.create_attr(parent_klass.to_s, parent)
       return child
     end

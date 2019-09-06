@@ -2,10 +2,11 @@ module Conekta
   module Operations
     module Find
       module ClassMethods
-        def find(id)
+        def find(api_key, id)
           instance = self.new(id)
-          response = Requestor.new.request(:get, instance._url)
+          response = Requestor.new(api_key).request(:get, instance._url)
           instance.load_from(response)
+          instance.api_key = api_key
           instance
         end
 
