@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'conekta/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "conekta"
+  spec.name          = "conekta-tiempometa"
   spec.version       = Conekta::VERSION
   spec.authors       = ["Conekta"]
   spec.email         = ["soporte@conekta.com"]
